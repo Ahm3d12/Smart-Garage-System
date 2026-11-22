@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Access event history for the Smart Garage access control system.">
+  <meta name="theme-color" content="#ffffff">
+  <title>Access History · Smart Garage</title>
+  <link rel="icon" href="../assets/images/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/main.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/pages.css">
+</head>
+<body data-page="history" data-root="../">
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="sidebar-root"></div>
+
+  <div class="app-shell">
+    <header class="topbar">
+      <button class="icon-button topbar__menu" id="sidebar-toggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="app-sidebar">
+        <i data-lucide="menu" aria-hidden="true"></i>
+      </button>
+      <div class="topbar__title">
+        <p class="eyebrow">Audit trail</p>
+        <h1>Access History</h1>
+      </div>
+      <div class="topbar__actions">
+        <span class="chip">
+          <i data-lucide="database" aria-hidden="true"></i>
+          Sample data
+        </span>
+        <span class="topbar__phase">Phase 1 · UI preview</span>
+      </div>
+    </header>
+
+    <main class="page" id="main-content">
+      <div class="page-heading">
+        <div>
+          <h2>Entrance event log</h2>
+          <p>Review authorization decisions recorded by the license plate recognition system.</p>
+        </div>
+      </div>
+
+      <div class="notice notice--muted" role="note">
+        <i data-lucide="info" aria-hidden="true"></i>
+        <span>This log uses simulated records. Search and filtering update the browser view only.</span>
+      </div>
+
+      <section aria-labelledby="history-summary-heading">
+        <div class="section-head">
+          <div>
+            <h2 id="history-summary-heading">Log summary</h2>
+            <p>Counts calculated from the sample event set.</p>
+          </div>
+          <span class="badge badge--neutral">Sample data</span>
+        </div>
+        <div class="summary-strip" id="history-summary"></div>
+      </section>
+
+      <section class="toolbar" aria-label="Filter access history">
+        <div class="toolbar__field toolbar__field--grow">
+          <label for="history-search">Search plate</label>
+          <div class="search-field">
+            <i data-lucide="search" aria-hidden="true"></i>
+            <input class="input" id="history-search" type="search" placeholder="Search by license plate">
+          </div>
+        </div>
+        <div class="toolbar__field">
+          <label for="history-result">Result</label>
+          <select class="select" id="history-result">
+            <option value="all">All results</option>
+            <option value="authorized">Authorized</option>
+            <option value="unauthorized">Unauthorized</option>
+          </select>
+        </div>
+        <span class="toolbar__spacer"></span>
+        <span class="toolbar__note">
+          <i data-lucide="filter" aria-hidden="true"></i>
+          Sample records
+        </span>
+      </section>
+
+      <section class="card" aria-labelledby="history-table-heading">
+        <header class="card__header">
+          <div class="card__title">
+            <h2 id="history-table-heading">Access events</h2>
+            <p>Sample recognition events at the main gate.</p>
+          </div>
+          <div class="card__actions">
+            <span class="badge badge--neutral">Sample data</span>
+          </div>
+        </header>
+        <div class="table-wrap">
+          <table class="data-table">
+            <caption class="sr-only">Access history events using sample data</caption>
+            <thead>
+              <tr>
+                <th scope="col">License plate</th>
+                <th scope="col">Date &amp; Time</th>
+                <th scope="col">Authorization</th>
+                <th scope="col">Gate Status</th>
+              </tr>
+            </thead>
+            <tbody id="history-events-body"></tbody>
+          </table>
+        </div>
+        <div class="empty-state" id="history-empty" hidden>
+          <i data-lucide="search-x" aria-hidden="true"></i>
+          <p>No access events match the current search.</p>
+        </div>
+      </section>
+
+      <footer class="app-footer">
+        <span>© 2026 Smart Garage Access Control</span>
+        <span class="app-footer__meta">
+          <i data-lucide="wifi-off" aria-hidden="true"></i>
+          No backend connected · Phase 1 UI foundation
+        </span>
+      </footer>
+    </main>
+  </div>
+
+  <script src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.js"></script>
+  <script type="module" src="../js/app.js"></script>
+</body>
+</html>

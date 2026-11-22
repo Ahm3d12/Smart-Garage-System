@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="System architecture and integration information for the Smart Garage access control project.">
+  <meta name="theme-color" content="#ffffff">
+  <title>System Information · Smart Garage</title>
+  <link rel="icon" href="../assets/images/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/main.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/pages.css">
+</head>
+<body data-page="system" data-root="../">
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="sidebar-root"></div>
+
+  <div class="app-shell">
+    <header class="topbar">
+      <button class="icon-button topbar__menu" id="sidebar-toggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="app-sidebar">
+        <i data-lucide="menu" aria-hidden="true"></i>
+      </button>
+      <div class="topbar__title">
+        <p class="eyebrow">Platform</p>
+        <h1>System Information</h1>
+      </div>
+      <div class="topbar__actions">
+        <span class="chip">
+          <i data-lucide="cpu" aria-hidden="true"></i>
+          Project overview
+        </span>
+        <span class="topbar__phase">Phase 1 · UI preview</span>
+      </div>
+    </header>
+
+    <main class="page" id="main-content">
+      <div class="page-heading">
+        <div>
+          <h2>System architecture</h2>
+          <p>Overview of the Smart Garage platform, its hardware components and planned integrations.</p>
+        </div>
+      </div>
+
+      <div class="notice notice--muted" role="note">
+        <i data-lucide="info" aria-hidden="true"></i>
+        <span>Application mode: Simulation. No hardware component, camera stream, database, or backend service is connected.</span>
+      </div>
+
+      <section class="info-grid" aria-label="Integration status">
+        <article class="info-card">
+          <div class="info-card__top">
+            <span class="info-card__icon"><i data-lucide="server" aria-hidden="true"></i></span>
+            <span class="badge badge--warning">Not connected</span>
+          </div>
+          <h3>REST API</h3>
+          <p>Endpoints will be provided by the backend workstream in a later phase.</p>
+          <p class="info-card__meta">Configuration: <strong id="api-config-state">Not configured</strong></p>
+        </article>
+
+        <article class="info-card">
+          <div class="info-card__top">
+            <span class="info-card__icon"><i data-lucide="camera" aria-hidden="true"></i></span>
+            <span class="badge badge--neutral">Offline</span>
+          </div>
+          <h3>Camera feed</h3>
+          <p>The Ultra96 license plate camera stream is represented by a placeholder.</p>
+          <p class="info-card__meta">Source: <strong>Ultra96</strong></p>
+        </article>
+
+        <article class="info-card">
+          <div class="info-card__top">
+            <span class="info-card__icon"><i data-lucide="lock" aria-hidden="true"></i></span>
+            <span class="badge badge--neutral">No command channel</span>
+          </div>
+          <h3>Gate actuator</h3>
+          <p>Gate commands will be routed through the API to the servo controller.</p>
+          <p class="info-card__meta">Actuator: <strong>SG90 servo</strong></p>
+        </article>
+
+        <article class="info-card">
+          <div class="info-card__top">
+            <span class="info-card__icon"><i data-lucide="database" aria-hidden="true"></i></span>
+            <span class="badge badge--neutral">Not provisioned</span>
+          </div>
+          <h3>Data storage</h3>
+          <p>This delivery is frontend-only. No database or persistence layer is included.</p>
+          <p class="info-card__meta">Data source: <strong>Sample only</strong></p>
+          <p class="info-card__meta">Application mode: <strong>Simulation</strong></p>
+        </article>
+      </section>
+
+      <div class="page-split">
+        <section class="card" aria-labelledby="components-heading">
+          <header class="card__header">
+            <div class="card__title">
+              <h2 id="components-heading">Hardware components</h2>
+              <p>Devices defined in the project specification.</p>
+            </div>
+            <div class="card__actions">
+              <span class="badge badge--neutral">Planned</span>
+            </div>
+          </header>
+          <div class="card__body">
+            <div class="component-list">
+              <div class="component-row">
+                <span class="component-row__icon"><i data-lucide="cpu" aria-hidden="true"></i></span>
+                <span class="component-row__body">
+                  <strong>Arduino Uno</strong>
+                  <span>Sensor and actuator controller</span>
+                </span>
+                <span class="badge badge--neutral">Planned</span>
+              </div>
+              <div class="component-row">
+                <span class="component-row__icon"><i data-lucide="activity" aria-hidden="true"></i></span>
+                <span class="component-row__body">
+                  <strong>HC-SR501 PIR sensor</strong>
+                  <span>Motion detection at the entrance</span>
+                </span>
+                <span class="badge badge--neutral">Planned</span>
+              </div>
+              <div class="component-row">
+                <span class="component-row__icon"><i data-lucide="settings" aria-hidden="true"></i></span>
+                <span class="component-row__body">
+                  <strong>SG90 servo motor</strong>
+                  <span>Barrier gate actuation</span>
+                </span>
+                <span class="badge badge--neutral">Planned</span>
+              </div>
+              <div class="component-row">
+                <span class="component-row__icon"><i data-lucide="server" aria-hidden="true"></i></span>
+                <span class="component-row__body">
+                  <strong>Raspberry Pi</strong>
+                  <span>Gateway and application hosting</span>
+                </span>
+                <span class="badge badge--neutral">Planned</span>
+              </div>
+              <div class="component-row">
+                <span class="component-row__icon"><i data-lucide="camera" aria-hidden="true"></i></span>
+                <span class="component-row__body">
+                  <strong>Ultra96 camera</strong>
+                  <span>License plate recognition</span>
+                </span>
+                <span class="badge badge--neutral">Planned</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="card" aria-labelledby="roadmap-heading">
+          <header class="card__header">
+            <div class="card__title">
+              <h2 id="roadmap-heading">Development roadmap</h2>
+              <p>Work planned across the project phases.</p>
+            </div>
+            <div class="card__actions">
+              <span class="badge badge--info">Phase 1 of 4</span>
+            </div>
+          </header>
+          <div class="card__body">
+            <ol class="timeline">
+              <li class="timeline__item timeline__item--current">
+                <span class="timeline__marker"><i data-lucide="check" aria-hidden="true"></i></span>
+                <div class="timeline__body">
+                  <strong>Phase 1 · Frontend foundation</strong>
+                  <p>Design system, application shell and dashboard placeholders.</p>
+                </div>
+              </li>
+              <li class="timeline__item">
+                <span class="timeline__marker"><i data-lucide="circle" aria-hidden="true"></i></span>
+                <div class="timeline__body">
+                  <strong>Phase 2 · REST API integration</strong>
+                  <p>Live status, plate records and access events.</p>
+                </div>
+              </li>
+              <li class="timeline__item">
+                <span class="timeline__marker"><i data-lucide="circle" aria-hidden="true"></i></span>
+                <div class="timeline__body">
+                  <strong>Phase 3 · Camera and gate control</strong>
+                  <p>Stream embedding and safe gate command handling.</p>
+                </div>
+              </li>
+              <li class="timeline__item">
+                <span class="timeline__marker"><i data-lucide="circle" aria-hidden="true"></i></span>
+                <div class="timeline__body">
+                  <strong>Phase 4 · Testing and documentation</strong>
+                  <p>End-to-end validation and final project documentation.</p>
+                </div>
+              </li>
+            </ol>
+          </div>
+        </section>
+      </div>
+
+      <footer class="app-footer">
+        <span>© 2026 Smart Garage Access Control</span>
+        <span class="app-footer__meta">
+          <i data-lucide="wifi-off" aria-hidden="true"></i>
+          No backend connected · Phase 1 UI foundation
+        </span>
+      </footer>
+    </main>
+  </div>
+
+  <script src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.js"></script>
+  <script type="module" src="../js/app.js"></script>
+</body>
+</html>

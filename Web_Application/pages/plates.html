@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="License plate registry for the Smart Garage access control system.">
+  <meta name="theme-color" content="#ffffff">
+  <title>License Plates · Smart Garage</title>
+  <link rel="icon" href="../assets/images/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/main.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/pages.css">
+</head>
+<body data-page="plates" data-root="../">
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="sidebar-root"></div>
+
+  <div class="app-shell">
+    <header class="topbar">
+      <button class="icon-button topbar__menu" id="sidebar-toggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="app-sidebar">
+        <i data-lucide="menu" aria-hidden="true"></i>
+      </button>
+      <div class="topbar__title">
+        <p class="eyebrow">Vehicle registry</p>
+        <h1>License Plates</h1>
+      </div>
+      <div class="topbar__actions">
+        <span class="chip">
+          <i data-lucide="database" aria-hidden="true"></i>
+          Sample data
+        </span>
+        <span class="topbar__phase">Phase 1 · UI preview</span>
+      </div>
+    </header>
+
+    <main class="page" id="main-content">
+      <div class="page-heading">
+        <div>
+          <h2>Recognized plate registry</h2>
+          <p>Review vehicles known to the garage and the access level assigned to each plate.</p>
+        </div>
+      </div>
+
+      <div class="notice notice--muted" role="note">
+        <i data-lucide="info" aria-hidden="true"></i>
+        <span>Plate records use simulated sample data. Add, edit, delete, and search actions update the browser view only.</span>
+      </div>
+
+      <section class="toolbar" aria-label="Filter license plates">
+        <div class="toolbar__field toolbar__field--grow">
+          <label for="plate-search">Search</label>
+          <div class="search-field">
+            <i data-lucide="search" aria-hidden="true"></i>
+            <input class="input" id="plate-search" type="search" placeholder="Search by plate or owner">
+          </div>
+        </div>
+        <div class="toolbar__field">
+          <label for="plate-status">Registration</label>
+          <select class="select" id="plate-status">
+            <option value="all">All registrations</option>
+            <option value="Registered">Registered</option>
+            <option value="Blocked">Blocked</option>
+            <option value="Expired">Expired</option>
+          </select>
+        </div>
+        <span class="toolbar__spacer"></span>
+        <button class="button button--primary" type="button" id="plate-add-button">
+          <i data-lucide="plus" aria-hidden="true"></i>
+          Add plate
+        </button>
+      </section>
+
+      <section class="card" id="plate-form-card" hidden aria-labelledby="plate-form-heading">
+        <header class="card__header">
+          <div class="card__title">
+            <h2 id="plate-form-heading">Plate details</h2>
+            <p>Add or edit a simulated license plate record.</p>
+          </div>
+          <div class="card__actions">
+            <button class="button button--ghost button--sm" type="button" id="plate-cancel-button">Cancel</button>
+          </div>
+        </header>
+        <div class="card__body">
+          <form class="form-grid" id="plate-form">
+            <input type="hidden" id="plate-id">
+            <label class="form-field">
+              <span>License plate</span>
+              <input class="input" id="plate-value" type="text" required placeholder="AB-123-CD">
+            </label>
+            <label class="form-field">
+              <span>Owner</span>
+              <input class="input" id="plate-owner" type="text" required placeholder="Owner name">
+            </label>
+            <label class="form-field">
+              <span>Vehicle</span>
+              <input class="input" id="plate-vehicle" type="text" required placeholder="Vehicle model">
+            </label>
+            <label class="form-field">
+              <span>Access level</span>
+              <select class="select" id="plate-access">
+                <option>Resident</option>
+                <option>Guest</option>
+                <option>Blocked</option>
+              </select>
+            </label>
+            <label class="form-field">
+              <span>Registration status</span>
+              <select class="select" id="plate-registration">
+                <option>Registered</option>
+                <option>Blocked</option>
+                <option>Expired</option>
+              </select>
+            </label>
+            <label class="form-field">
+              <span>Last seen</span>
+              <input class="input" id="plate-last-seen" type="text" placeholder="Today, 14:32">
+            </label>
+            <div class="form-actions">
+              <button class="button button--primary" type="submit" id="plate-save-button">Save plate</button>
+            </div>
+          </form>
+        </div>
+      </section>
+
+      <section class="card" aria-labelledby="plates-table-heading">
+        <header class="card__header">
+          <div class="card__title">
+            <h2 id="plates-table-heading">Registered plates</h2>
+            <p>Sample vehicles recognised by the entrance camera.</p>
+          </div>
+          <div class="card__actions">
+            <span class="badge badge--neutral">Sample data</span>
+          </div>
+        </header>
+        <div class="table-wrap">
+          <table class="data-table">
+            <caption class="sr-only">Registered license plates using sample data</caption>
+            <thead>
+              <tr>
+                <th scope="col">License plate</th>
+                <th scope="col">Owner</th>
+                <th scope="col">Access level</th>
+                <th scope="col">Registration</th>
+                <th scope="col">Last seen</th>
+                <th scope="col">Recognition</th>
+                <th scope="col">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="plates-body"></tbody>
+          </table>
+        </div>
+        <div class="empty-state" id="plates-empty" hidden>
+          <i data-lucide="search-x" aria-hidden="true"></i>
+          <p>No license plates match the current search.</p>
+        </div>
+      </section>
+
+      <footer class="app-footer">
+        <span>© 2026 Smart Garage Access Control</span>
+        <span class="app-footer__meta">
+          <i data-lucide="wifi-off" aria-hidden="true"></i>
+          No backend connected · Phase 1 UI foundation
+        </span>
+      </footer>
+    </main>
+  </div>
+
+  <script src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.js"></script>
+  <script type="module" src="../js/app.js"></script>
+</body>
+</html>

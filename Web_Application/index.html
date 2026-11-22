@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Smart Garage access control dashboard for monitoring gate status, motion detection, license plates and access events.">
+  <meta name="theme-color" content="#ffffff">
+  <title>Dashboard · Smart Garage</title>
+  <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages.css">
+</head>
+<body data-page="dashboard" data-root="">
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="sidebar-root"></div>
+
+  <div class="app-shell">
+    <header class="topbar">
+      <button class="icon-button topbar__menu" id="sidebar-toggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="app-sidebar">
+        <i data-lucide="menu" aria-hidden="true"></i>
+      </button>
+      <div class="topbar__title">
+        <p class="eyebrow">Access control</p>
+        <h1>Dashboard</h1>
+      </div>
+      <div class="topbar__actions">
+        <span class="chip">
+          <i data-lucide="database" aria-hidden="true"></i>
+          Sample data
+        </span>
+        <span class="topbar__phase">Phase 1 · Simulation</span>
+      </div>
+    </header>
+
+    <main class="page" id="main-content">
+      <div class="page-heading">
+        <div>
+          <h2>Garage overview</h2>
+          <p>Monitor the entrance, review vehicle recognition results and test the simulated gate controls.</p>
+        </div>
+      </div>
+
+      <div class="notice" role="note">
+        <i data-lucide="info" aria-hidden="true"></i>
+        <span><strong>Simulation mode.</strong> Status values and access events use mock data. Gate controls animate a frontend-only simulation; no hardware or REST API is connected.</span>
+      </div>
+
+      <section aria-labelledby="status-heading">
+        <div class="section-head">
+          <div>
+            <h2 id="status-heading">Current status</h2>
+            <p>Current mock state of the garage entrance.</p>
+          </div>
+          <span class="badge badge--neutral">Sample data</span>
+        </div>
+        <div class="stat-grid" id="status-panel"></div>
+      </section>
+
+      <div class="dashboard-grid">
+        <section id="camera-root" aria-label="Camera stream"></section>
+        <section id="gate-controls-root" aria-label="Gate controls"></section>
+      </div>
+
+      <section class="card" aria-labelledby="recent-events-heading">
+        <header class="card__header">
+          <div class="card__title">
+            <h2 id="recent-events-heading">Recent access events</h2>
+            <p>Latest recognized vehicles at the main gate.</p>
+          </div>
+          <div class="card__actions">
+            <span class="badge badge--neutral">Sample data</span>
+            <a class="button button--ghost button--sm" href="pages/history.html">
+              View history
+              <i data-lucide="arrow-right" aria-hidden="true"></i>
+            </a>
+          </div>
+        </header>
+        <div class="table-wrap">
+          <table class="data-table">
+            <caption class="sr-only">Recent access events using sample data</caption>
+            <thead>
+              <tr>
+                <th scope="col">License plate</th>
+                <th scope="col">Date &amp; Time</th>
+                <th scope="col">Authorization</th>
+                <th scope="col">Gate Status</th>
+              </tr>
+            </thead>
+            <tbody id="recent-events-body"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <footer class="app-footer">
+        <span>© 2026 Smart Garage Access Control</span>
+        <span class="app-footer__meta">
+          <i data-lucide="wifi-off" aria-hidden="true"></i>
+          No backend connected · Phase 1 UI foundation
+        </span>
+      </footer>
+    </main>
+  </div>
+
+  <script src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.js"></script>
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>
